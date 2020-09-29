@@ -4,6 +4,7 @@
 CONTENTS                                                   *VimRepoConfContents*
 
 1. Usage .... |VimRepoConfUsage|
+2. Debug .... |VimRepoConfDebug|
 
 ================================================================================
 Section 1: USAGE                                              *VimRepoConfUsage*
@@ -26,3 +27,10 @@ let g:vim_repo_conf = {
 
 This will load `options-a.vim` when launched from any subfolder of `repo-a`.
 Similarly for `repo-b`.
+
+================================================================================
+Section 2: DEBUG                                              *VimRepoConfDebug*
+
+To see messages logged by the plugin:
+
+:echo string(g:vim_repo_conf_log)

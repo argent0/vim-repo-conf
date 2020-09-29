@@ -8,7 +8,18 @@
 if exists("g:loaded_vim_repo_conf") || &cp || v:version < 700
      finish
 endif
+
 let g:loaded_vim_repo_conf = 1
+
+
+" Print debug info into a list
+function! s:logm(msg)
+	" Create log if not created already
+	if !exists("g:vim_repo_conf_log")
+		let g:vim_repo_conf_log = []
+	endif
+	call add(g:vim_repo_conf_log, a:msg)
+endfunction
 
 function! s:main()
 	" Check if we are at a git repository
@@ -19,10 +30,10 @@ function! s:main()
 		let repo_root = substitute(system("git rev-parse --show-toplevel"), '\n\+$', '', '')
 		if exists("g:vim_repo_conf")
 			if has_key(g:vim_repo_conf, repo_root)
-				echom "[vim-repo-conf] Loading:" . g:vim_repo_conf[repo_root]
+				call s:logm("[vim-repo-conf] Loading:" . g:vim_repo_conf[repo_root])
 				execute "source " . g:vim_repo_conf[repo_root]
 			else
-				echom "[vim-repo-conf] No key:" . repo_root . " " . string(g:vim_repo_conf)
+				call s:logm("[vim-repo-conf] No key:" . repo_root . " " . string(g:vim_repo_conf))
 			endif
 		endif
 	endif

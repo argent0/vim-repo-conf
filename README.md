@@ -21,6 +21,14 @@ let g:vim_repo_conf = {
 This will load `options-a.vim` when launched from any subfolder of `repo-a`.
 Similarly for `repo-b`.
 
+## Debug
+
+To see messages logged by the plugin:
+
+```
+:echo string(g:vim_repo_conf_log)
+```
+
 <!--
 vim: spell
 -->
