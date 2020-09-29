@@ -12,7 +12,7 @@ let g:loaded_pluginname = 1
 
 function! s:main()
 	" Check if we are at a git repository
-	let is_git_repo = system("git", "-C" "." "rev-parse")
+	let is_git_repo = system('git -C . rev-parse')
 	echo "this is sparta"
 	" is_git_repo
 endfunction
